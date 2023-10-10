@@ -1,5 +1,8 @@
 import setuptools
 
+with open('requirements.txt', 'r') as f:
+    requirements = f.read().splitlines()
+
 setuptools.setup(
     name='parryutil',
     version='0.0.1',
@@ -8,5 +11,6 @@ setuptools.setup(
     description="Utilities for research",
     url='https://github.com/Parry-Parry/ParryUtil',
     packages=setuptools.find_packages(),
+    install_requires=requirements,
     python_requires='>=3.6',
 )
