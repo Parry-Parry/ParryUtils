@@ -1,1 +1,1 @@
-from funcs import clean, cut_prompt, batch, concatenate, copy_path
+from .funcs import clean, cut_prompt, batch, concatenate, copy_path

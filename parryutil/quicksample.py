@@ -5,10 +5,10 @@ import ir_datasets as irds
 
 def sample(dataset : str, out_file : str, subset : int = 100000):
     dataset = irds.load(dataset)
-    train = pd.DataFrame(dataset.docpairs_iter()).rename(columns={'query_id': 'qid',})
-    train = train.sample(n=subset) 
+    df = pd.DataFrame(dataset.docpairs_iter()).rename(columns={'query_id': 'qid',})
+    df = df.sample(n=subset) 
 
-    train.to_csv(out_file, sep='\t', index=False)
+    df.to_csv(out_file, sep='\t', index=False)
 
     return "Done!"
 
