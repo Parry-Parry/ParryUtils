@@ -16,7 +16,11 @@ def execute(config_path : str):
         cmd = ['python', '-m', cfg['script']]
         for arg, val in cfg['args'].items():
             cmd.append(f'--{arg}')
-            cmd.append(str(val))
+            if val is not None:
+                if type(val) == list:
+                    cmd.append(' '.join(val))
+                    continue
+                cmd.append(str(val))
         sp.run(cmd)
     
     return f'Completed {len(executions)} executions.'
