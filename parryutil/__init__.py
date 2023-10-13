@@ -1,16 +1,26 @@
+from typing import Union
 from .funcs import clean, cut_prompt, batch, concatenate, copy_path
+from .execute import execute
+from .compress import compress
+
+COMMANDS = {
+    'compress' : compress,
+    'execute' : execute
+}
+
+def parse_bool(arg : str) -> Union[bool, str]:
+    if arg.lower == 'true': return True
+    if arg.lower == 'false': return False
+    return arg
 
 def main(args):
-    import sys
     if len(args) == 1: 
-        from .execute import execute
         execute(args[0])
     else: 
-        sys.stderr.write('Usage: parryutil <config_path> ...\n')
-        sys.exit(1)
+        COMMANDS[args[0]](*map(parse_bool, args[1:]))
 
 def main_cli():
     import sys
     main(sys.argv[1:])
 
-__version__ = '0.0.2'
+__version__ = '0.0.3'

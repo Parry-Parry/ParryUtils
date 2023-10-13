@@ -5,7 +5,7 @@ from os.path import join
 from tqdm import tqdm
 from functools import partial
 
-def main(dir : str, out : str, dtype : str , index_col : bool = False, header : bool = False):
+def compress(dir : str, out : str, dtype : str , index_col : bool = False, header : bool = False):
     os.makedirs(out, exist_ok=True)
     files = [f for f in os.listdir(dir) if f.endswith(f'.{dtype}')]
 
@@ -17,7 +17,6 @@ def main(dir : str, out : str, dtype : str , index_col : bool = False, header : 
         open_func = partial(pd.read_csv, sep=sep, index_col=index_col, header=header)
     elif dtype == 'json':
         open_func = partial(pd.read_json, index_col=index_col, header=header, orient='records', lines=True)
-        
     else:
         raise ValueError(f'Unknown dtype: {dtype}')
 
@@ -38,4 +37,4 @@ def main(dir : str, out : str, dtype : str , index_col : bool = False, header : 
     return 0
     
 if __name__ == '__main__':
-    Fire(main)
+    Fire(compress)
