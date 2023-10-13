@@ -11,8 +11,8 @@ COMMANDS = {
 }
 
 def parse_bool(arg : str) -> Union[bool, str]:
-    if arg.lower == 'true': return True
-    if arg.lower == 'false': return False
+    if arg.lower() == 'true': return True
+    if arg.lower() == 'false': return False
     return arg
 
 def main(args):
