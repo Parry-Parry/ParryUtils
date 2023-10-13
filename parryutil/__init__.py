@@ -2,10 +2,12 @@ from typing import Union
 from .funcs import clean, cut_prompt, batch, concatenate, copy_path
 from .execute import execute
 from .compress import compress
+from .quicksample import sample
 
 COMMANDS = {
     'compress' : compress,
-    'execute' : execute
+    'execute' : execute,
+    'sample' : sample
 }
 
 def parse_bool(arg : str) -> Union[bool, str]:
