@@ -13,5 +13,4 @@ def main_cli():
     import sys
     main(sys.argv[1:])
 
-
 __version__ = '0.0.2'
