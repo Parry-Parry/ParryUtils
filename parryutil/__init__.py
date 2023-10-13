@@ -2,7 +2,7 @@ from typing import Union
 from .funcs import clean, cut_prompt, batch, concatenate, copy_path
 from .execute import execute
 from .compress import compress
-from .quicksample import sample
+from .sample import sample
 
 COMMANDS = {
     'compress' : compress,
