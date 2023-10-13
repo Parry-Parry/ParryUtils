@@ -12,5 +12,8 @@ setuptools.setup(
     url='https://github.com/Parry-Parry/ParryUtil',
     packages=setuptools.find_packages(),
     install_requires=requirements,
-    python_requires='>=3.6',
+    python_requires='>=3.7',
+    entry_points={
+        'console_scripts': ['parryutil=parryutil:main_cli'],
+    },
 )
