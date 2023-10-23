@@ -1,5 +1,5 @@
 from typing import Union
-from .funcs import clean, cut_prompt, batch, concatenate, copy_path
+from .funcs import clean, cut_prompt, batch, concatenate, copy_path, load_yaml
 from .execute import execute
 from .compress import compress
 from .sample import sample
@@ -9,7 +9,8 @@ COMMANDS = {
     'compress' : compress,
     'execute' : execute,
     'sample' : sample,
-    'request' : request
+    'request' : request,
+    'load' : load_yaml
 }
 
 def parse_bool(arg : str) -> Union[bool, str]:

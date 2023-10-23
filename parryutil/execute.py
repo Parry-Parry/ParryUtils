@@ -1,15 +1,11 @@
 from fire import Fire
-from yaml import load
-try:
-    from yaml import CLoader as Loader
-except ImportError:
-    from yaml import Loader
 import json
 import logging 
 import subprocess as sp
+from parryutil import load_yaml
 
 def execute(config_path : str):
-    executions = load(open(config_path, 'r'), Loader=Loader)
+    executions = load_yaml(config_path)
 
     for k, cfg in executions.items():
         logging.info('\n'.join([f'EXECUTION NAME: {k}', 'ARGS:', json.dumps(cfg['args'], indent=2)]))
