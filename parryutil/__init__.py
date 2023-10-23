@@ -3,11 +3,13 @@ from .funcs import clean, cut_prompt, batch, concatenate, copy_path
 from .execute import execute
 from .compress import compress
 from .sample import sample
+from .request import request
 
 COMMANDS = {
     'compress' : compress,
     'execute' : execute,
-    'sample' : sample
+    'sample' : sample,
+    'request' : request
 }
 
 def parse_bool(arg : str) -> Union[bool, str]:
