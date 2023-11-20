@@ -20,8 +20,9 @@ def parse_bool(arg : str) -> Union[bool, str]:
     return arg
 
 def main(args):
-    if len(args) == 1: 
-        execute(args[0])
+    if args[0] not in COMMANDS:
+        if len(args) > 1: execute(args[0], args[1])
+        else: execute(args[0])
     else: 
         COMMANDS[args[0]](*map(parse_bool, args[1:]))
 

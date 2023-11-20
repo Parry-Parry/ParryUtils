@@ -75,3 +75,4 @@ class EarlyStopping(object):
         ranks = model.transform(self.val_topics)
         value = self.compute_metric(ranks)
         return self.step(value)
+
