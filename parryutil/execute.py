@@ -6,11 +6,9 @@ from parryutil import load_yaml
 
 def execute(config_path : str, default_path : str = None):
     executions = load_yaml(config_path)
-    if default_path is not None:
-        defaults = load_yaml(default_path)
+    if default_path is not None: defaults = load_yaml(default_path)
     for k, cfg in executions.items():
-        if default_path is not None:
-            cfg = {**defaults, **cfg}
+        if default_path is not None: cfg['args'].update(defaults)  
         logging.info('\n'.join([f'EXECUTION NAME: {k}', 'ARGS:', json.dumps(cfg['args'], indent=2)]))
         cmd = ['python', '-m', cfg['script']]
         for arg, val in cfg['args'].items():
