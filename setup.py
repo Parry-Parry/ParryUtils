@@ -4,7 +4,7 @@ with open('requirements.txt', 'r') as f:
     requirements = f.read().splitlines()
 
 setuptools.setup(
-    name='parryutil',
+    name='utility',
     version='0.0.3',
     author='Andrew Parry',
     author_email='a.parry.1@research.gla.ac.uk',
@@ -14,6 +14,6 @@ setuptools.setup(
     install_requires=requirements,
     python_requires='>=3.7',
     entry_points={
-        'console_scripts': ['parryutil=parryutil:main_cli'],
+        'console_scripts': ['utility=utility:main_cli'],
     },
 )
