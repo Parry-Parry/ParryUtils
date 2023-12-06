@@ -10,7 +10,6 @@ try:
     from yaml import CLoader as Loader
 except ImportError:
     from yaml import Loader
-from fire import Fire
 
 clean = lambda x : re.sub(r"[^a-zA-Z0-9¿]+", " ", x)
 
