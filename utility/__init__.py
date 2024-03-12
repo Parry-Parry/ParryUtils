@@ -1,6 +1,7 @@
 from typing import Union
 from .funcs import clean, cut_prompt, batch, concatenate, copy_path, load_yaml, timer
 from .earlystop import EarlyStopping
+from .rankers import LOAD_FUNCS
 from .execute import execute
 from .compress import compress
 from .sample import sample
