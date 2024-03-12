@@ -27,12 +27,14 @@ class EarlyStopping(object):
         self.evaluator = ir_measures.evaluator([self.metric], qrels)
 
     def step(self, metrics):
+        indicator = False
         if self.best is None:
             self.best = metrics
-            return False
+            indicator = True
+            return False, indicator
 
         if np.isnan(metrics):
-            return True
+            return True, indicator
 
         if self.is_better(metrics, self.best):
             self.num_bad_epochs = 0
@@ -41,9 +43,9 @@ class EarlyStopping(object):
             self.num_bad_epochs += 1
 
         if self.num_bad_epochs >= self.patience:
-            return True
+            return True, indicator
 
-        return False
+        return False, indicator
 
     def _init_is_better(self, mode, min_delta, percentage):
         if mode not in {'min', 'max'}:
