@@ -1,13 +1,13 @@
 from fire import Fire
-import pandas as pd
 import logging
-import ir_datasets as irds
 
 '''
 Quick subsetting of any ir_datasets docpairs.
 '''
 
 def sample(dataset : str, out_file : str, subset : int = 100000):
+    import pandas as pd
+    import ir_datasets as irds
     dataset = irds.load(dataset)
     assert dataset.has_docpairs(), "Dataset must have docpairs! Make sure you're not using a test collection"
     df = pd.DataFrame(dataset.docpairs_iter())
