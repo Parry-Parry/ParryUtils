@@ -22,8 +22,6 @@ def main(ir_dataset : str,
     if subset > 0: queries = queries.sample(n=subset)
     index = PisaIndex(index_path, threads=num_threads)
     bm25 = index.bm25(k1=1.2, b=0.75, num_results=budget, verbose=True)
-
-    queries['query'] = queries['query'].map(clean)
     print(f'Running BM25 on {len(queries)} queries')
 
     result = bm25.transform(queries)
