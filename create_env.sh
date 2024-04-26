@@ -15,7 +15,7 @@ create_env() {
     # Activate the environment
     source activate $env_name
 
-    source install pytorch torchvision torchaudio pytorch-cuda=11.8 -c pytorch -c nvidia || echo "Failed to install pytorch, continuing with other packages..."
+    conda install pytorch torchvision torchaudio pytorch-cuda=11.8 -c pytorch -c nvidia || echo "Failed to install pytorch, continuing with other packages..."
     pip install transformers[torch] || echo "Failed to install transformers, continuing with other packages..."
     pip install python-terrier || echo "Failed to install pandas, continuing with other packages..."
     pip install fire || echo "Failed to install fire, continuing with other packages..."
