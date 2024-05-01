@@ -37,4 +37,4 @@ python_version=$2
 
 create_env $env_name $python_version
 
-echo "Conda environment '$env_name' created and pandas installed."
+echo "Conda environment '$env_name' created and installed core packages."
