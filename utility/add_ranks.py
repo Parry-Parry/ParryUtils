@@ -7,6 +7,7 @@ def ranks(file: str, out : str=None):
     
     if out is None: out = file
     res = pt.io.read_results(file)
+    res = res.sort_values(by=["qid", "score"], ascending=[True, False])
     res = pt.model.add_ranks(res)
     pt.io.write_results(res, out)
 
