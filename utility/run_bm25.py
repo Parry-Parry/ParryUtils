@@ -8,7 +8,7 @@ import re
 import ir_datasets as irds
 from pyterrier_pisa import PisaIndex
 
-clean = lambda x : re.sub(r"[^a-zA-Z0-9¿]+", " ", x)
+clean = lambda x : re.sub(r"[^a-zA-Z0-9¿]+", "", x)
 
 def main(ir_dataset : str,
          index_path : str,
