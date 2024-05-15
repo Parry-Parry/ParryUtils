@@ -7,8 +7,8 @@ import ir_datasets as irds
 import pandas as pd
 
 def main(eval :str, run_dir : str, out_dir : str, rel : int = 1, iter=False, metric : str = None):
-    parent_dir = os.path.dirname(run_dir)
-    os.makedirs(parent_dir, exist_ok=True)
+    parent = os.path.dirname(out_dir)
+    os.makedirs(parent, exist_ok=True)
     files = [f for f in os.listdir(run_dir) if os.path.isfile(join(run_dir, f))]
     ds = irds.load(eval)
     qrels = ds.qrels_iter()
