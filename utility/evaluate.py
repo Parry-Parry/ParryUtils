@@ -22,7 +22,7 @@ def main(eval :str, run_dir : str, out_dir : str, rel : int = 1, iter=False, met
             run = read_trec_run(join(run_dir, file))
             if iter:
                 res = {}
-                for elt in evaluate.calc_iter(run):
+                for elt in evaluate.iter_calc(run):
                     df.append(
                         {
                             'name' : name,
