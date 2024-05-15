@@ -1,18 +1,19 @@
 from fire import Fire 
 import os 
 from os.path import join
-from ir_measures import evaluator, read_trec_run 
+from ir_measures import evaluator, read_trec_run, parse_measure
 from ir_measures import *
 import ir_datasets as irds
 import pandas as pd
 
-def main(eval :str, run_dir : str, out_dir : str, rel : int = 1, iter=False):
+def main(eval :str, run_dir : str, out_dir : str, rel : int = 1, iter=False, metric : str = None):
     parent_dir = os.path.dirname(run_dir)
     os.makedirs(parent_dir, exist_ok=True)
     files = [f for f in os.listdir(run_dir) if os.path.isfile(join(run_dir, f))]
     ds = irds.load(eval)
     qrels = ds.qrels_iter()
-    metrics = [AP(rel=rel), NDCG(cutoff=10), NDCG(cutoff=5), NDCG(cutoff=1), R(rel=rel)@100, R(rel=rel)@1000, P(rel=rel, cutoff=10), RR(rel=rel), RR(rel=rel, cutoff=10)]
+    if metric is not None: metrics = [parse_measure(metric)]
+    else: metrics = [AP(rel=rel), NDCG(cutoff=10), NDCG(cutoff=5), NDCG(cutoff=1), R(rel=rel)@100, R(rel=rel)@1000, P(rel=rel, cutoff=10), RR(rel=rel), RR(rel=rel, cutoff=10)]
     evaluate = evaluator(metrics, qrels)
     df = []
     for file in files:
