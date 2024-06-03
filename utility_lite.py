@@ -10,6 +10,17 @@ try:
 except ImportError:
     from yaml import Loader
 
+def seed_everything(seed=42):
+    import random
+    import numpy as np
+    import torch
+
+    random.seed(seed)
+    np.random.seed(seed)
+    torch.manual_seed(seed)
+    torch.cuda.manual_seed_all(seed)
+    torch.backends.cudnn.deterministic = True
+
 def sample(dataset : str, out_file : str, subset : int = 100000):
     import pandas as pd
     import ir_datasets as irds
