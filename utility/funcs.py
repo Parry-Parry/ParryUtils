@@ -13,6 +13,10 @@ except ImportError:
 
 clean = lambda x : re.sub(r"[^a-zA-Z0-9¿]+", " ", x)
 
+def refresh():
+    os.system('git pull')
+    os.system('pip install -e .')
+
 def cut_prompt(output : str, input : str) -> str:
     return output[len(input):]
 

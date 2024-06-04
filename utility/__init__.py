@@ -1,5 +1,5 @@
 from typing import Union
-from .funcs import clean, cut_prompt, batch, concatenate, copy_path, load_yaml, timer
+from .funcs import clean, cut_prompt, batch, concatenate, copy_path, load_yaml, timer, refresh
 from .earlystop import EarlyStopping
 from .rankers import LOAD_FUNCS
 from .execute import execute
@@ -12,7 +12,8 @@ COMMANDS = {
     'execute' : execute,
     'sample' : sample,
     'request' : request,
-    'load' : load_yaml
+    'load' : load_yaml,
+    'refresh' : refresh
 }
 
 def parse_bool(arg : str) -> Union[bool, str]:
